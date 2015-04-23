@@ -17,6 +17,7 @@
 		4938F7081ACA11FC00196D28 /* XmlParserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4938F7011ACA11FC00196D28 /* XmlParserManager.swift */; };
 		4938F7091ACA11FC00196D28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4938F7021ACA11FC00196D28 /* Main.storyboard */; };
 		49A516851AE8623E00B183DA /* RSSFeeds.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49A516841AE8623E00B183DA /* RSSFeeds.plist */; };
+		49A516871AE93D2600B183DA /* categoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A516861AE93D2600B183DA /* categoryManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		4938F7011ACA11FC00196D28 /* XmlParserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XmlParserManager.swift; sourceTree = "<group>"; };
 		4938F7021ACA11FC00196D28 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		49A516841AE8623E00B183DA /* RSSFeeds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RSSFeeds.plist; sourceTree = "<group>"; };
+		49A516861AE93D2600B183DA /* categoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = categoryManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +89,9 @@
 			isa = PBXGroup;
 			children = (
 				4938F6FC1ACA11FC00196D28 /* AppDelegate.swift */,
-				4938F6FE1ACA11FC00196D28 /* FeedTableViewController.swift */,
 				4938F6FF1ACA11FC00196D28 /* NewFeedViewController.swift */,
+				4938F6FE1ACA11FC00196D28 /* FeedTableViewController.swift */,
+				49A516861AE93D2600B183DA /* categoryManager.swift */,
 				4938F7001ACA11FC00196D28 /* FeedWebPageViewController.swift */,
 				4938F7011ACA11FC00196D28 /* XmlParserManager.swift */,
 				4938F7021ACA11FC00196D28 /* Main.storyboard */,
@@ -232,6 +235,7 @@
 				4938F7081ACA11FC00196D28 /* XmlParserManager.swift in Sources */,
 				4938F7051ACA11FC00196D28 /* FeedTableViewController.swift in Sources */,
 				4938F7061ACA11FC00196D28 /* NewFeedViewController.swift in Sources */,
+				49A516871AE93D2600B183DA /* categoryManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,15 +12,13 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
 
     var myFeed : NSArray = []
     var searchingTableData: [String] = []
+    var keys: [String] = []
     var searchingURLData: [String:String] = Dictionary()
     var url: NSURL = NSURL()
-    var is_searching:Bool = false   // It's flag for searching
+    var is_searching:Bool = false
     var currentRow:NSIndexPath = NSIndexPath()
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    var nib = UINib(nibName: "Cell", bundle: nil)
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,15 +29,17 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
         self.tableView.delegate = self
         
         // Set feed url. http://www.formula1.com/rss/news/latest.rss
-        url = NSURL(string: "http://events.ithaca.edu/calendar.xml")!
+        //url = NSURL(string: "http://events.ithaca.edu/calendar.xml")!
         // Call custom function.
-        loadRss(url);
+        loadRss();
 
     }
     
-    func loadRss(data: NSURL) {
+    func loadRss() {
         // XmlParserManager instance/object/variable
-        var myParser : XmlParserManager = XmlParserManager.alloc().initWithURL(data) as! XmlParserManager
+        //var myParser : XmlParserManager = XmlParserManager.alloc().initWithURL(data) as! XmlParserManager
+        let categories = categoryManager()
+        let myParser: XmlParserManager = categories.buildCategoryData("All")
         // Put feed in array
         myFeed = myParser.feeds
         
@@ -57,7 +57,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
             newUrl.onDataAvailable = {[weak self]
                 (data) in
                 if let weakSelf = self {
-                    weakSelf.loadRss(data)
+                    weakSelf.loadRss()
                 }
             }
         }
@@ -165,27 +165,25 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        //let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
+        //let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        //var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
         
-        
+        let cell:UITableViewCell = UITableViewCell(style: .Subtitle, reuseIdentifier: "Cell")
         // Set cell properties.
         if is_searching == true{
             if let labelText:String = searchingTableData[indexPath.row] as String?{
                 cell.textLabel?.text = labelText
+                
             }
         }else{
             // Feeds dictionary.
             var dict : NSDictionary! = myFeed.objectAtIndex(indexPath.row) as! NSDictionary
             cell.textLabel?.text = myFeed.objectAtIndex(indexPath.row).objectForKey("title") as? String
         
-        
-            // It seems that cell.textLabel?.text is no longer an optionional.
-            // If the above line throws an error then comment it out and uncomment the below line.
-            //cell.textLabel?.text = myFeed.objectAtIndex(indexPath.row).objectForKey("title") as? String
-
+            //cell.detailTextLabel?.text = "test"
             cell.detailTextLabel?.text = myFeed.objectAtIndex(indexPath.row).objectForKey("pubDate") as? String
         }
+        
         return cell
     }
 }
