@@ -129,24 +129,53 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="fnE-VD-KDS">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" reuseIdentifier="CollectionViewCell" id="fnE-VD-KDS">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmB-ZS-6uC">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="13" y="0.0" width="42" height="42"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="DmB-ZS-6uC"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="DmB-ZS-6uC"/>
+                                            </mask>
+                                        </variation>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="lzX-Wl-YQu" id="qUZ-Do-BnC"/>
+                                    <outlet property="delegate" destination="lzX-Wl-YQu" id="zEo-6L-OLf"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ALi-e7-kng" firstAttribute="leading" secondItem="ulF-rm-AeT" secondAttribute="leading" id="FPv-1H-13F"/>
-                            <constraint firstItem="ALi-e7-kng" firstAttribute="top" secondItem="aEq-X2-1eM" secondAttribute="bottom" id="WRL-lw-HZx"/>
+                            <constraint firstItem="ALi-e7-kng" firstAttribute="top" secondItem="aEq-X2-1eM" secondAttribute="bottom" id="WRL-lw-HZx">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-64"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="ALi-e7-kng" secondAttribute="trailing" id="a47-25-isT"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="ALi-e7-kng" secondAttribute="bottom" constant="42" id="m4s-6i-VRG"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="ALi-e7-kng" secondAttribute="bottom" constant="42" id="m4s-6i-VRG">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">

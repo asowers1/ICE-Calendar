@@ -10,7 +10,9 @@ import UIKit
 
 class categoryManager: NSObject {
 
-    let categories:[String:String] = ["All":"http://events.ithaca.edu/calendar.xml","athletics-intercollegiate":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=29600","concert_recitalEvents":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26360","screening":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26364","speaker_lecture":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26366","conference_workshop":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26361","social_networking":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26365","alumni":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=28717","performance":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26363","readings":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26606","ceremony":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=34562"]
+    let categories:[String:String] = ["All":"http://events.ithaca.edu/calendar.xml","athletics-intercollegiate":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=29600","concert_recitalEvents":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26360","screening":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26364","speaker_lecture":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26366","conference_workshop":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26361","social_networking":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26365","alumni":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=28717","performance":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26363","readings":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26606","ceremony":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=34562","communityService":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26369","athletics_recSports":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=29601","exhibit":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26362","meeting":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26359"]
+    
+    let intToCategoryStringName:[String] = ["Athletics - Intercollegiate","Concert/Recital","Screening","Conference/Workshop","Speaker/Lecture","Performance","Social/Networking", "Alumni","Reading","Ceremony","Community Service","Athletics - Rec Sports","Exhibit","Meeting"]
 
     
     func buildAndGetCategoryData(category:String) -> NSArray {
@@ -59,5 +61,9 @@ class categoryManager: NSObject {
         let xmlManager: XmlParserManager = XmlParserManager.alloc().initWithURL(data) as! XmlParserManager
         return xmlManager.feeds
 
+    }
+    
+    func categoryCount() -> Int {
+        return intToCategoryStringName.count
     }
 }

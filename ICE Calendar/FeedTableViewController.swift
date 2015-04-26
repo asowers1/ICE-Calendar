@@ -36,7 +36,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
     
     func loadRss() {
         let categories = categoryManager()
-        myFeed = categories.buildAndGetCategoryData("ceremony")
+        myFeed = categories.buildAndGetCategoryData("All")
         tableView.reloadData()
     }
 

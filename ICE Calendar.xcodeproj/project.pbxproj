@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		491F73A41AEC7DA800DACB32 /* categoryCollectionViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491F73A31AEC7DA800DACB32 /* categoryCollectionViewViewController.swift */; };
+		491F73A61AED71E600DACB32 /* userPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 491F73A51AED71E600DACB32 /* userPreferences.plist */; };
 		4938F6E31ACA0F2200196D28 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4938F6E21ACA0F2200196D28 /* Images.xcassets */; };
 		4938F6E61ACA0F2200196D28 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4938F6E41ACA0F2200196D28 /* LaunchScreen.xib */; };
 		4938F6F21ACA0F2200196D28 /* ICE_CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4938F6F11ACA0F2200196D28 /* ICE_CalendarTests.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		491F73A31AEC7DA800DACB32 /* categoryCollectionViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = categoryCollectionViewViewController.swift; sourceTree = "<group>"; };
+		491F73A51AED71E600DACB32 /* userPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userPreferences.plist; sourceTree = "<group>"; };
 		4938F6D61ACA0F2200196D28 /* ICE Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ICE Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4938F6DA1ACA0F2200196D28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4938F6E21ACA0F2200196D28 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				4938F7001ACA11FC00196D28 /* FeedWebPageViewController.swift */,
 				4938F7011ACA11FC00196D28 /* XmlParserManager.swift */,
 				491F73A31AEC7DA800DACB32 /* categoryCollectionViewViewController.swift */,
+				491F73A51AED71E600DACB32 /* userPreferences.plist */,
 				4938F7021ACA11FC00196D28 /* Main.storyboard */,
 				4938F6E21ACA0F2200196D28 /* Images.xcassets */,
 				4938F6E41ACA0F2200196D28 /* LaunchScreen.xib */,
@@ -212,6 +215,7 @@
 				4938F7091ACA11FC00196D28 /* Main.storyboard in Resources */,
 				49A516891AE97C1800B183DA /* RSSData.plist in Resources */,
 				4938F6E61ACA0F2200196D28 /* LaunchScreen.xib in Resources */,
+				491F73A61AED71E600DACB32 /* userPreferences.plist in Resources */,
 				4938F6E31ACA0F2200196D28 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
