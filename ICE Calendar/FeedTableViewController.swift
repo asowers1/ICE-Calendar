@@ -39,9 +39,8 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
         // XmlParserManager instance/object/variable
         //var myParser : XmlParserManager = XmlParserManager.alloc().initWithURL(data) as! XmlParserManager
         let categories = categoryManager()
-        let myParser: XmlParserManager = categories.buildCategoryData("All")
-        // Put feed in array
-        myFeed = myParser.feeds
+        myFeed = categories.buildCategoryData("All")
+        
         
         tableView.reloadData()
     }
@@ -53,16 +52,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if let newUrl = segue.destinationViewController as? NewFeedViewController {
-            newUrl.onDataAvailable = {[weak self]
-                (data) in
-                if let weakSelf = self {
-                    weakSelf.loadRss()
-                }
-            }
-        }
-        
-        else if segue.identifier == "openPage" {
+        if segue.identifier == "openPage" {
             var indexPath: NSIndexPath = self.currentRow
             let selectedFTitle: String = myFeed[indexPath.row].objectForKey("title") as! String
             let selectedFContent: String = myFeed[indexPath.row].objectForKey("description") as! String

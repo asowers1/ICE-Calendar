@@ -2,39 +2,41 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>All</key>
+	<array/>
 	<key>athletics-intercollegiate</key>
-	<dict/>
+	<array/>
 	<key>concert_recital</key>
-	<dict/>
+	<array/>
 	<key>screening</key>
-	<dict/>
+	<array/>
 	<key>conference_workshop</key>
-	<dict/>
+	<array/>
 	<key>speaker_lecture</key>
-	<dict/>
+	<array/>
 	<key>performance</key>
-	<dict/>
+	<array/>
 	<key>theatre</key>
-	<dict/>
+	<array/>
 	<key>dance</key>
-	<dict/>
+	<array/>
 	<key>other</key>
-	<dict/>
+	<array/>
 	<key>social_networking</key>
-	<dict/>
+	<array/>
 	<key>alumni</key>
-	<dict/>
+	<array/>
 	<key>reading</key>
-	<dict/>
+	<array/>
 	<key>ceremony</key>
-	<dict/>
+	<array/>
 	<key>communityService</key>
-	<dict/>
+	<array/>
 	<key>athletics-recSports</key>
-	<dict/>
+	<array/>
 	<key>exhibit</key>
-	<dict/>
+	<array/>
 	<key>meeting</key>
-	<dict/>
+	<array/>
 </dict>
 </plist>

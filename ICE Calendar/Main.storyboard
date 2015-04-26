@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e6E-Lv-saj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e6E-Lv-saj">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -91,7 +91,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jVB-QU-PyH" firstAttribute="top" secondItem="P6G-4g-51q" secondAttribute="bottom" id="L7u-nf-BFA"/>
+                            <constraint firstItem="jVB-QU-PyH" firstAttribute="top" secondItem="P6G-4g-51q" secondAttribute="bottom" id="L7u-nf-BFA">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-49"/>
+                            </constraint>
                             <constraint firstItem="P6G-4g-51q" firstAttribute="top" secondItem="qjZ-aG-EpY" secondAttribute="topMargin" id="MX1-PX-yB0"/>
                             <constraint firstItem="P6G-4g-51q" firstAttribute="leading" secondItem="qjZ-aG-EpY" secondAttribute="leadingMargin" constant="-16" id="SfX-kp-eSa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="P6G-4g-51q" secondAttribute="trailing" constant="-16" id="ckU-yo-Gwg"/>
@@ -104,12 +106,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OVA-Bs-Kdk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2428" y="-794"/>
+            <point key="canvasLocation" x="2427" y="-794.25"/>
         </scene>
-        <!--settings-->
+        <!--Category Collection View View Controller-->
         <scene sceneID="lBK-E9-VzM">
             <objects>
-                <viewController id="lzX-Wl-YQu" sceneMemberID="viewController">
+                <viewController id="lzX-Wl-YQu" customClass="categoryCollectionViewViewController" customModule="ICE_Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aEq-X2-1eM"/>
                         <viewControllerLayoutGuide type="bottom" id="r7u-tH-Wqm"/>
@@ -117,13 +119,66 @@
                     <view key="view" contentMode="scaleToFill" id="ulF-rm-AeT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ALi-e7-kng">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zc6-Io-4Ae">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="fnE-VD-KDS">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ALi-e7-kng" firstAttribute="leading" secondItem="ulF-rm-AeT" secondAttribute="leading" id="FPv-1H-13F"/>
+                            <constraint firstItem="ALi-e7-kng" firstAttribute="top" secondItem="aEq-X2-1eM" secondAttribute="bottom" id="WRL-lw-HZx"/>
+                            <constraint firstAttribute="trailing" secondItem="ALi-e7-kng" secondAttribute="trailing" id="a47-25-isT"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="ALi-e7-kng" secondAttribute="bottom" constant="42" id="m4s-6i-VRG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="ALi-e7-kng"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="FPv-1H-13F"/>
+                                <exclude reference="WRL-lw-HZx"/>
+                                <exclude reference="a47-25-isT"/>
+                                <exclude reference="m4s-6i-VRG"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="ALi-e7-kng"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="FPv-1H-13F"/>
+                                <include reference="WRL-lw-HZx"/>
+                                <include reference="a47-25-isT"/>
+                                <include reference="m4s-6i-VRG"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="settings" id="yuJ-AV-Kq9"/>
+                    <navigationItem key="navigationItem" id="zwz-uo-jwt"/>
+                    <connections>
+                        <outlet property="collectionView" destination="ALi-e7-kng" id="ePd-b4-dbs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pic-zR-WFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="638" y="-101"/>
+            <point key="canvasLocation" x="1549.5" y="-107.25"/>
         </scene>
         <!--Saved-->
         <scene sceneID="wQQ-7A-Kpf">
@@ -138,7 +193,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Saved" id="L3h-SY-H7m"/>
+                    <tabBarItem key="tabBarItem" title="Saved" image="Saved" id="L3h-SY-H7m"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="noY-vr-hjk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,7 +212,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Perferences" id="7MK-tE-8vS"/>
+                    <tabBarItem key="tabBarItem" title="Perferences" image="Checked List" id="7MK-tE-8vS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3xf-5x-ij8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -177,7 +232,7 @@
                         <segue destination="BOL-L4-de8" kind="relationship" relationship="viewControllers" id="CKk-7G-gO8"/>
                         <segue destination="1Dd-se-3Ti" kind="relationship" relationship="viewControllers" id="WWW-0a-WJl"/>
                         <segue destination="j9Q-UM-oF2" kind="relationship" relationship="viewControllers" id="NhI-Bo-6ju"/>
-                        <segue destination="lzX-Wl-YQu" kind="relationship" relationship="viewControllers" id="27K-CN-uow"/>
+                        <segue destination="qqT-ux-JVj" kind="relationship" relationship="viewControllers" id="27K-CN-uow"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxe-jK-bAN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,7 +243,7 @@
         <scene sceneID="omF-Oq-Khp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BOL-L4-de8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="All" id="UcD-HO-ghm"/>
+                    <tabBarItem key="tabBarItem" title="All" image="List" id="UcD-HO-ghm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Q3-yA-F6E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -203,5 +258,30 @@
             </objects>
             <point key="canvasLocation" x="638" y="-794"/>
         </scene>
+        <!--settings-->
+        <scene sceneID="gk8-6Z-LNd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qqT-ux-JVj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="settings" image="Settings" id="yuJ-AV-Kq9"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qF-5G-rYv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lzX-Wl-YQu" kind="relationship" relationship="rootViewController" id="ufl-sl-WUy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4cz-YE-bij" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="637.5" y="-107.25"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Checked List" width="24" height="24"/>
+        <image name="List" width="24" height="24"/>
+        <image name="Saved" width="26" height="26"/>
+        <image name="Settings" width="24" height="24"/>
+    </resources>
 </document>
