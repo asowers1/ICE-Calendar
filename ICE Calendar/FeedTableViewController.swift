@@ -18,6 +18,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
     var is_searching:Bool = false
     var currentRow:NSIndexPath = NSIndexPath()
     
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
@@ -28,20 +29,14 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        // Set feed url. http://www.formula1.com/rss/news/latest.rss
         //url = NSURL(string: "http://events.ithaca.edu/calendar.xml")!
-        // Call custom function.
         loadRss();
 
     }
     
     func loadRss() {
-        // XmlParserManager instance/object/variable
-        //var myParser : XmlParserManager = XmlParserManager.alloc().initWithURL(data) as! XmlParserManager
         let categories = categoryManager()
-        myFeed = categories.buildCategoryData("All")
-        
-        
+        myFeed = categories.buildAndGetCategoryData("ceremony")
         tableView.reloadData()
     }
 

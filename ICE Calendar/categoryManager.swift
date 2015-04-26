@@ -9,8 +9,11 @@
 import UIKit
 
 class categoryManager: NSObject {
+
+    let categories:[String:String] = ["All":"http://events.ithaca.edu/calendar.xml","athletics-intercollegiate":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=29600","concert_recitalEvents":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26360","screening":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26364","speaker_lecture":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26366","conference_workshop":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26361","social_networking":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26365","alumni":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=28717","performance":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26363","readings":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26606","ceremony":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=34562"]
+
     
-    func buildCategoryData(category:String) -> NSArray {
+    func buildAndGetCategoryData(category:String) -> NSArray {
         
         // getting path to GameData.plist
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
@@ -51,7 +54,7 @@ class categoryManager: NSObject {
     }
     
     func getCategoriesFromWebRequest(category:String) -> NSArray {
-        var baseURL: String = "http://events.ithaca.edu/calendar.xml"
+        var baseURL: String = categories[category]!
         let data = NSURL(string: baseURL)!
         let xmlManager: XmlParserManager = XmlParserManager.alloc().initWithURL(data) as! XmlParserManager
         return xmlManager.feeds
