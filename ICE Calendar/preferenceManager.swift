@@ -10,9 +10,23 @@ import UIKit
 
 class preferenceManager: NSObject {
    
+    // MARK: instance properties
+    
     let categories: categoryManager = categoryManager()
     var categoryConversionList: [String:String] = ["Athletics - Intercollegiate":"athletics-intercollegiate","Concert/Recital":"concert_recital","Screening":"screening","Conference/Workshop":"conference_workshop","Speaker/Lecture":"speaker_lecture","Performance":"performance","Social/Networking":"social_networking", "Alumni":"alumni","Reading":"readings","Ceremony":"ceremony","Community Service":"communityService","Athletics - Rec Sports":"athletics-recSports","Exhibit":"exhibit","Meeting":"meeting"]
     
+    
+    // MARK: instance methods
+    
+    /********************************************************************
+    *Function: setupPath
+    *Purpose: helper method to setup the path of our preference plist file
+    *Parameters: Void.
+    *Return: String
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     func setupPath() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
         let documentsDirectory = paths[0] as! String
@@ -35,7 +49,15 @@ class preferenceManager: NSObject {
         return path
     }
     
-    
+    /********************************************************************
+    *Function: updatePreference
+    *Purpose: update the preference list with a key:value pair
+    *Parameters: key:String, value:Bool
+    *Return: Void.
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     func updatePreference(key:String,value:Bool) {
         let path:String = setupPath()
         let resultDictionary = NSMutableDictionary(contentsOfFile: path)
@@ -46,6 +68,15 @@ class preferenceManager: NSObject {
 
     }
     
+    /********************************************************************
+    *Function: getPreference
+    *Purpose: get the prefered state of a category from the preference list
+    *Parameters: key of category
+    *Return: Bool
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     func getPreference(key:String) -> Bool {
         let path:String = setupPath()
         if let dictionary = NSDictionary(contentsOfFile: path){
@@ -54,6 +85,15 @@ class preferenceManager: NSObject {
         return false
     }
     
+    /********************************************************************
+    *Function: savePreferences
+    *Purpose: save an entire preference list
+    *Parameters: [category:prefered]
+    *Return: Void.
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     func savePreferences(preferenceList:[String:Bool]) {
         let path:String = setupPath()
         let resultDictionary = NSMutableDictionary(contentsOfFile: path)
@@ -65,6 +105,15 @@ class preferenceManager: NSObject {
         }
     }
     
+    /********************************************************************
+    *Function: getPreferenceList
+    *Purpose: get the whole preference list
+    *Parameters: Void.
+    *Return: [category:prefered]
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     func getPreferenceList() -> [String:Bool] {
         let path:String = setupPath()
         if let dictionary = NSDictionary(contentsOfFile: path){
