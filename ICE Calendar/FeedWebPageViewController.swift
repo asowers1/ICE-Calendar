@@ -10,10 +10,25 @@ import UIKit
 
 class FeedWebPageViewController: UIViewController {
     
+    // MARK - instance variables
+    
     var feedURL = ""
 
+    // MARK - IBOutlets
+    
     @IBOutlet var myWebView: UIWebView!
     
+    // MARK: - UIKit overrides
+    
+    /********************************************************************
+    *Function: viewDidLoad
+    *Purpose: viewDidLoad
+    *Parameters: Void.
+    *Return: Void.
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
         myWebView.loadRequest(NSURLRequest(URL: NSURL(string: feedURL)!))
@@ -21,6 +36,15 @@ class FeedWebPageViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    /********************************************************************
+    *Function: didReceiveMemoryWarning
+    *Purpose: didReceiveMemoryWarning
+    *Parameters: Void.
+    *Return: Void.
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
