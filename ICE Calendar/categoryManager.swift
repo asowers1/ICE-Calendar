@@ -10,11 +10,24 @@ import UIKit
 
 class categoryManager: NSObject {
 
+    
+    // MARK: instance properties
+    
     let categories:[String:String] = ["All":"http://events.ithaca.edu/calendar.xml","athletics-intercollegiate":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=29600","concert_recitalEvents":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26360","screening":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26364","speaker_lecture":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26366","conference_workshop":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26361","social_networking":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26365","alumni":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=28717","performance":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26363","readings":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26606","ceremony":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=34562","communityService":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26369","athletics_recSports":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=29601","exhibit":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26362","meeting":"http://events.ithaca.edu/calendar.xml?event_types%5B%5D=26359"]
     
     let intToCategoryStringName:[String] = ["Athletics - Intercollegiate","Concert/Recital","Screening","Conference/Workshop","Speaker/Lecture","Performance","Social/Networking", "Alumni","Reading","Ceremony","Community Service","Athletics - Rec Sports","Exhibit","Meeting"]
 
+    // MARK: instance methods
     
+    /********************************************************************
+    *Function: buildAndGetCategoryData
+    *Purpose: build our category data. Either get it from local plist file or get from the web.
+    *Parameters: category:String
+    *Return: NSArray
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     func buildAndGetCategoryData(category:String) -> NSArray {
         
         // getting path to RSSPath.plist
@@ -54,6 +67,15 @@ class categoryManager: NSObject {
         }
     }
     
+    /********************************************************************
+    *Function: getCategoriesFromWebRequest
+    *Purpose: get NSArray of categories from the web
+    *Parameters: Void.
+    *Return: NSArrat
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     func getCategoriesFromWebRequest(category:String) -> NSArray {
         var baseURL: String = categories[category]!
         let data = NSURL(string: baseURL)!
@@ -62,6 +84,15 @@ class categoryManager: NSObject {
 
     }
     
+    /********************************************************************
+    *Function: getPreferedKeys
+    *Purpose: get array of strings where the strings are category names
+    *Parameters: Void.
+    *Return: [String]
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     func getPreferedKeys() -> [String] {
         var preferedKeys = [String]()
         let preferences:[String:Bool] = preferenceManager().getPreferenceList()
@@ -73,7 +104,15 @@ class categoryManager: NSObject {
         return preferedKeys
     }
     
-    
+    /********************************************************************
+    *Function: getPreferedCategories
+    *Purpose: get array of NSArrays of categories
+    *Parameters: Void.
+    *Return: Int
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     func getPreferedCategories() -> [NSArray] {
         var preferedCategories = [NSArray]()
         let preferences:[String:Bool] = preferenceManager().getPreferenceList()
@@ -85,6 +124,15 @@ class categoryManager: NSObject {
         return preferedCategories
     }
     
+    /********************************************************************
+    *Function: categoryCount
+    *Purpose: get count of categories
+    *Parameters: Void.
+    *Return: Int
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     func categoryCount() -> Int {
         return intToCategoryStringName.count
     }
