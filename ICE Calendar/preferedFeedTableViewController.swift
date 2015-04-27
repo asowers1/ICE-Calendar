@@ -124,7 +124,6 @@ class preferedFeedTableViewController: UITableViewController, UITableViewDataSou
     *Properties modified: is_searching, searcingTableData
     *Precondition: Class must conform to UISearchBarDelegate
     ********************************************************************/
-    // MARK searching delegate logic
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
         println("did change")
         if searchBar.text.isEmpty{
