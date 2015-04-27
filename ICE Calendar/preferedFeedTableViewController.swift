@@ -45,6 +45,7 @@ class preferedFeedTableViewController: UITableViewController, UITableViewDataSou
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
+        
     }
     
     /********************************************************************
@@ -247,14 +248,18 @@ class preferedFeedTableViewController: UITableViewController, UITableViewDataSou
         if is_searching == true{
             if let labelText:String = searchingTableData[indexPath.row] as String?{
                 cell.textLabel?.text = labelText
-                
+                cell.textLabel?.textColor = UIColor.whiteColor()
             }
         }else{
             // Feeds dictionary.
             cell.textLabel?.text = categories[indexPath.section].objectAtIndex(indexPath.row).objectForKey("title") as? String
             cell.detailTextLabel?.text = categories[indexPath.section].objectAtIndex(indexPath.row).objectForKey("pubDate") as? String
+            cell.textLabel?.textColor = UIColor.whiteColor()
+            cell.detailTextLabel?.textColor = UIColor(red: 255/255.0, green: 183/255.0, blue: 0/255.0, alpha: 0.7)
         }
+        cell.backgroundColor = UIColor(red: 34/255.0, green: 71/255.0, blue: 98/255.0, alpha: 1)
         
         return cell
     }
+
 }

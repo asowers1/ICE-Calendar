@@ -12,7 +12,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Yqu-3L-XDs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="search events" id="S0w-o3-vAp">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -89,15 +89,41 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="P6G-4g-51q" firstAttribute="leading" secondItem="qjZ-aG-EpY" secondAttribute="leading" id="HNU-Tj-jyr"/>
                             <constraint firstItem="jVB-QU-PyH" firstAttribute="top" secondItem="P6G-4g-51q" secondAttribute="bottom" id="L7u-nf-BFA">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-49"/>
                             </constraint>
+                            <constraint firstItem="P6G-4g-51q" firstAttribute="top" secondItem="qjZ-aG-EpY" secondAttribute="top" id="LDa-Eg-4PH"/>
                             <constraint firstItem="P6G-4g-51q" firstAttribute="top" secondItem="qjZ-aG-EpY" secondAttribute="topMargin" id="MX1-PX-yB0"/>
                             <constraint firstItem="P6G-4g-51q" firstAttribute="leading" secondItem="qjZ-aG-EpY" secondAttribute="leadingMargin" constant="-16" id="SfX-kp-eSa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="P6G-4g-51q" secondAttribute="trailing" constant="-16" id="ckU-yo-Gwg"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="P6G-4g-51q" secondAttribute="bottom" constant="-44" id="osn-ff-Kj7"/>
+                            <constraint firstAttribute="trailing" secondItem="P6G-4g-51q" secondAttribute="trailing" id="qmN-iN-FGP"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HNU-Tj-jyr"/>
+                                <exclude reference="LDa-Eg-4PH"/>
+                                <exclude reference="osn-ff-Kj7"/>
+                                <exclude reference="qmN-iN-FGP"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="HNU-Tj-jyr"/>
+                                <include reference="LDa-Eg-4PH"/>
+                                <exclude reference="MX1-PX-yB0"/>
+                                <exclude reference="SfX-kp-eSa"/>
+                                <exclude reference="ckU-yo-Gwg"/>
+                                <include reference="osn-ff-Kj7"/>
+                                <include reference="qmN-iN-FGP"/>
+                                <exclude reference="L7u-nf-BFA"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Event" id="kAH-wO-uMw"/>
+                    <navigationItem key="navigationItem" title="Event" id="kAH-wO-uMw">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="sAe-P3-vE1"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="myWebView" destination="P6G-4g-51q" id="7gt-OA-xKl"/>
                     </connections>
@@ -106,7 +132,7 @@
             </objects>
             <point key="canvasLocation" x="702" y="-84.75"/>
         </scene>
-        <!--Category Collection View View Controller-->
+        <!--Set Preferences-->
         <scene sceneID="lBK-E9-VzM">
             <objects>
                 <viewController id="lzX-Wl-YQu" customClass="categoryCollectionViewViewController" customModule="ICE_Calendar" customModuleProvider="target" sceneMemberID="viewController">
@@ -133,29 +159,8 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmB-ZS-6uC">
-                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="13" y="0.0" width="42" height="42"/>
-                                                    </variation>
-                                                </label>
-                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="DmB-ZS-6uC"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="subviews">
-                                                <include reference="DmB-ZS-6uC"/>
-                                            </mask>
-                                        </variation>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -198,7 +203,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="zwz-uo-jwt"/>
+                    <navigationItem key="navigationItem" title="Set Preferences" id="zwz-uo-jwt"/>
                     <connections>
                         <outlet property="collectionView" destination="ALi-e7-kng" id="ePd-b4-dbs"/>
                     </connections>
@@ -212,10 +217,11 @@
             <objects>
                 <tableViewController id="Laa-GR-NDi" customClass="preferedFeedTableViewController" customModule="ICE_Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Q5v-AF-5uR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="search events" id="Z2P-go-Mh9">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -231,7 +237,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tbW-8o-zLh">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="heightClass=regular-widthClass=compact">
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -240,7 +246,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iFp-2h-kbi">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="heightClass=regular-widthClass=compact">
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -301,10 +307,15 @@
             <objects>
                 <tabBarController id="e6E-Lv-saj" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="LRS-y3-wgw">
+                    <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" id="LRS-y3-wgw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.019607843140000001" green="0.1450980392" blue="0.2784313725" alpha="0.25" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="BOL-L4-de8" kind="relationship" relationship="viewControllers" id="CKk-7G-gO8"/>
@@ -326,6 +337,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Q3-yA-F6E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="barTintColor" red="0.019607843137254902" green="0.14509803921568629" blue="0.27843137254901962" alpha="0.25" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -345,6 +361,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qF-5G-rYv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="barTintColor" red="0.019607843140000001" green="0.1450980392" blue="0.2784313725" alpha="0.25" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -364,6 +385,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="il0-dx-Ovm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="barTintColor" red="0.019607843140000001" green="0.1450980392" blue="0.2784313725" alpha="0.25" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -383,6 +409,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GhY-p0-qCa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="barTintColor" red="0.019607843140000001" green="0.1450980392" blue="0.2784313725" alpha="0.25" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.94422743060000003" green="0.94422743060000003" blue="0.94422743060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -401,6 +432,6 @@
         <image name="Settings" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="axf-mD-qb9"/>
+        <segue reference="TtY-Iw-l4V"/>
     </inferredMetricsTieBreakers>
 </document>

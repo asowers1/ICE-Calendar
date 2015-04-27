@@ -32,7 +32,6 @@ class FeedWebPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         myWebView.loadRequest(NSURLRequest(URL: NSURL(string: feedURL)!))
-        
         // Do any additional setup after loading the view.
     }
 
