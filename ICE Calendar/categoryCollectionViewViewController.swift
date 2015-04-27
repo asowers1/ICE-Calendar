@@ -13,11 +13,14 @@ class categoryCollectionViewViewController: UIViewController, UICollectionViewDe
     @IBOutlet var collectionView: UICollectionView!
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     
+    let prefMgr:preferenceManager = preferenceManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        println(prefMgr.getPreferenceList())
         // Do any additional setup after loading the view.
-        layout.sectionInset = UIEdgeInsets(top:20, left: 20, bottom: 10, right: 20)
+        layout.sectionInset = UIEdgeInsets(top:10, left: 10, bottom: 10, right: 10)
         layout.itemSize = CGSize(width: 90, height: 90)
         collectionView!.delegate = self
         collectionView!.backgroundColor = UIColor.whiteColor()
@@ -44,18 +47,28 @@ class categoryCollectionViewViewController: UIViewController, UICollectionViewDe
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         println("\(indexPath.section):\(indexPath.row)")
-        var title = UILabel(frame: CGRectMake(5, 5, cell.bounds.size.width-10, cell.bounds.size.height-10))
-        title.text = "\(categoryManager().intToCategoryStringName[indexPath.row])"
-        title.font = UIFont(name: "Helvetica Neue", size: 14)
+        var label = UILabel(frame: CGRectMake(5, 5, cell.bounds.size.width-10, cell.bounds.size.height-10))
+        label.text = "\(categoryManager().intToCategoryStringName[indexPath.row])"
+        label.font = UIFont(name: "Helvetica Neue", size: 14)
         // text will adjust font to fit size of parent view width
-        title.adjustsFontSizeToFitWidth = true
+        label.adjustsFontSizeToFitWidth = true
         // make text white
-        title.textColor = UIColor.whiteColor()
+        
+        if let category:String = label.text {
+            if let convertedCategory:String = prefMgr.categoryConversionList[category] {
+                let state:Bool = prefMgr.getPreference(convertedCategory)
+                if state == false {
+                    label.textColor = UIColor.whiteColor()
+                }else{
+                    label.textColor = UIColor.greenColor()
+                }
+            }
+        }
         // center text
-        title.textAlignment = NSTextAlignment(rawValue: 1)!
+        label.textAlignment = NSTextAlignment(rawValue: 1)!
         // add text cell to parent view
-        title.tag = indexPath.row
-        cell.contentView.addSubview(title)
+        label.tag = indexPath.row+1
+        cell.contentView.addSubview(label)
         
     }
     
@@ -64,8 +77,21 @@ class categoryCollectionViewViewController: UIViewController, UICollectionViewDe
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if let label:UILabel = collectionView.cellForItemAtIndexPath(indexPath)?.contentView.viewWithTag(indexPath.row) as? UILabel {
-            label.textColor = UIColor.greenColor()
+        if let label:UILabel = collectionView.cellForItemAtIndexPath(indexPath)?.contentView.viewWithTag(indexPath.row+1) as? UILabel {
+            if let category:String = label.text {
+                if let convertedCategory:String = prefMgr.categoryConversionList[category] {
+                    let state:Bool = prefMgr.getPreference(convertedCategory)
+                    if state == false {
+                        println("was false, set to true")
+                        prefMgr.updatePreference(convertedCategory, value: true)
+                        label.textColor = UIColor.greenColor()
+                    }else{
+                        println("was true, set to false")
+                        prefMgr.updatePreference(convertedCategory, value: false)
+                        label.textColor = UIColor.whiteColor()
+                    }
+                }
+            }
         }
     }
     

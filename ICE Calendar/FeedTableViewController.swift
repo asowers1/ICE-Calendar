@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, NSXMLParserDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
+class FeedTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
 
     var myFeed : NSArray = []
     var searchingTableData: [String] = []
@@ -30,14 +30,29 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
         self.tableView.delegate = self
         
         //url = NSURL(string: "http://events.ithaca.edu/calendar.xml")!
-        loadRss();
-
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        
+        
+        dispatch_async(dispatch_get_global_queue(priority, 0), { ()->() in
+            
+            self.loadRss()
+            dispatch_async(dispatch_get_main_queue(), {
+                
+                println("hello from UI thread executed as dispatch")
+                self.tableView.reloadData()
+            })
+            
+        })
+        println("hello from UI thread")
     }
     
     func loadRss() {
         let categories = categoryManager()
-        myFeed = categories.buildAndGetCategoryData("All")
-        tableView.reloadData()
+        self.myFeed = categories.buildAndGetCategoryData("All")
     }
 
 
@@ -106,7 +121,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
 
                 if currentString.lowercaseString.rangeOfString(searchText.lowercaseString)  != nil {
                     searchingTableData.append(myFeed.objectAtIndex(index).objectForKey("title") as! String)
-                    //searchingURLData.append(myFeed.objectAtIndex(index).objectForKey("link") as String)
                     
                     var value = myFeed.objectAtIndex(index).objectForKey("title") as! String
                     searchingURLData[value] = myFeed.objectAtIndex(index).objectForKey("link") as? String

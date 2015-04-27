@@ -1,0 +1,78 @@
+//
+//  preferenceManager.swift
+//  ICE Calendar
+//
+//  Created by Andrew Sowers on 4/26/15.
+//  Copyright (c) 2015 Andrew Sowers. All rights reserved.
+//
+
+import UIKit
+
+class preferenceManager: NSObject {
+   
+    let categories: categoryManager = categoryManager()
+    var categoryConversionList: [String:String] = ["Athletics - Intercollegiate":"athletics-intercollegiate","Concert/Recital":"concert_recital","Screening":"screening","Conference/Workshop":"conference_workshop","Speaker/Lecture":"speaker_lecture","Performance":"performance","Social/Networking":"social_networking", "Alumni":"alumni","Reading":"readings","Ceremony":"ceremony","Community Service":"communityService","Athletics - Rec Sports":"athletics-recSports","Exhibit":"exhibit","Meeting":"meeting"]
+    
+    func setupPath() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
+        let documentsDirectory = paths[0] as! String
+        let path = documentsDirectory.stringByAppendingPathComponent("userPreferences.plist")
+        let fileManager = NSFileManager.defaultManager()
+        //check if file exists
+        if(!fileManager.fileExistsAtPath(path)){
+            // if it doesn't copy it from the dfault file in the Bundle
+            if let bundlePath = NSBundle.mainBundle().pathForResource("userPreferences", ofType: "plist"){
+                let resultDictionary = NSMutableDictionary(contentsOfFile: bundlePath)
+                println("Bundle RSSData.plist file is --> \(resultDictionary?.description)")
+                fileManager.copyItemAtPath(bundlePath, toPath: path, error: nil)
+            } else {
+                println("RSSData.plist not found. Please, make sure it is part of the bundle.")
+            }
+        }else {
+            // userPreferences.plist is intact.
+            // use this to delete file from documents directory => //fileManager.removeItemAtPath(path, error: nil)
+        }
+        return path
+    }
+    
+    
+    func updatePreference(key:String,value:Bool) {
+        let path:String = setupPath()
+        let resultDictionary = NSMutableDictionary(contentsOfFile: path)
+        if let dictionary = NSDictionary(contentsOfFile: path){
+            resultDictionary!.setObject(value, forKey: key)
+            resultDictionary!.writeToFile(path, atomically: false)
+        }
+
+    }
+    
+    func getPreference(key:String) -> Bool {
+        let path:String = setupPath()
+        if let dictionary = NSDictionary(contentsOfFile: path){
+            return dictionary.objectForKey(key) as! Bool
+        }
+        return false
+    }
+    
+    func savePreferences(preferenceList:[String:Bool]) {
+        let path:String = setupPath()
+        let resultDictionary = NSMutableDictionary(contentsOfFile: path)
+        if let dictionary = NSDictionary(contentsOfFile: path){
+            for key:String in preferenceList.keys {
+                resultDictionary?.setObject(preferenceList[key]!, forKey: key)
+            }
+            resultDictionary!.writeToFile(path, atomically: false)
+        }
+    }
+    
+    func getPreferenceList() -> [String:Bool] {
+        let path:String = setupPath()
+        if let dictionary = NSDictionary(contentsOfFile: path){
+            // return result
+            return dictionary as! [String:Bool]
+        }else{
+            // failsafe: return new empty dictionary pointer
+            return [String:Bool]()
+        }
+    }
+}

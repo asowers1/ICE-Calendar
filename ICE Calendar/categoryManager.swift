@@ -17,7 +17,7 @@ class categoryManager: NSObject {
     
     func buildAndGetCategoryData(category:String) -> NSArray {
         
-        // getting path to GameData.plist
+        // getting path to RSSPath.plist
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
         let documentsDirectory = paths[0] as! String
         let path = documentsDirectory.stringByAppendingPathComponent("RSSData.plist")
@@ -33,9 +33,8 @@ class categoryManager: NSObject {
                 println("RSSData.plist not found. Please, make sure it is part of the bundle.")
             }
         } else {
-            println("RSSData.plist already exits at path.")
-            // use this to delete file from documents directory
-            //fileManager.removeItemAtPath(path, error: nil)
+            println("RSSData.plist is intact.")
+            // use this to delete file from documents directory => //fileManager.removeItemAtPath(path, error: nil)
         }
         let resultDictionary = NSMutableDictionary(contentsOfFile: path)
         var myDictionary = NSDictionary(contentsOfFile: path)
@@ -61,6 +60,29 @@ class categoryManager: NSObject {
         let xmlManager: XmlParserManager = XmlParserManager.alloc().initWithURL(data) as! XmlParserManager
         return xmlManager.feeds
 
+    }
+    
+    func getPreferedKeys() -> [String] {
+        var preferedKeys = [String]()
+        let preferences:[String:Bool] = preferenceManager().getPreferenceList()
+        for key in preferences.keys {
+            if preferences[key] == true {
+                preferedKeys.append(key)
+            }
+        }
+        return preferedKeys
+    }
+    
+    
+    func getPreferedCategories() -> [NSArray] {
+        var preferedCategories = [NSArray]()
+        let preferences:[String:Bool] = preferenceManager().getPreferenceList()
+        for key in preferences.keys {
+            if preferences[key] == true {
+                preferedCategories.append(buildAndGetCategoryData(key))
+            }
+        }
+        return preferedCategories
     }
     
     func categoryCount() -> Int {
