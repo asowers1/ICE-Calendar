@@ -10,6 +10,8 @@ import UIKit
 
 class FeedTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
 
+    // MARK: - instance properties
+    
     var myFeed : NSArray = []
     var searchingTableData: [String] = []
     var keys: [String] = []
@@ -18,9 +20,21 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
     var is_searching:Bool = false
     var currentRow:NSIndexPath = NSIndexPath()
     
+    // MARK: - IBOutlets
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    // MARK: - UIKit overrides
+    
+    /********************************************************************
+    *Function: viewDidLoad
+    *Purpose: viewDidLoad
+    *Parameters: Void.
+    *Return: Void.
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -33,6 +47,15 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
         
     }
     
+    /********************************************************************
+    *Function: viewWillAppear
+    *Purpose: viewWillAppear and load data
+    *Parameters: animated: Bool
+    *Return: Void.
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     override func viewWillAppear(animated: Bool) {
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         
@@ -50,15 +73,44 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
         println("hello from UI thread")
     }
     
+    /********************************************************************
+    *Function: loadRss
+    *Purpose: load RSS
+    *Parameters: Void.
+    *Return: Void.
+    *Properties self.myFeed
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     func loadRss() {
         let categories = categoryManager()
         self.myFeed = categories.buildAndGetCategoryData("All")
     }
 
-
+    /********************************************************************
+    *Function: didReceiveMemoryWarning
+    *Purpose: didReceiveMemoryWarning
+    *Parameters: Void.
+    *Return: Void.
+    *Properties NA
+    *Precondition: NA
+    *Written by: Andrew Sowers
+    ********************************************************************/
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    // MARK: - segue methods
+    
+    /********************************************************************
+    *Function: prepareForSegue
+    *Purpose: perform segue
+    *Parameters: segue: UIStoryboardSegue, sender: AnyObject?
+    *Return: Void.
+    *Properties modified: NA
+    *Precondition: segue.identifier == "openPage" must be a thing to work properly
+    *Written by: Andrew Sowers
+    ********************************************************************/
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -95,6 +147,8 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
     }
     
     
+    // MARK searching delegate logic
+    
     /********************************************************************
     *Function: searchBar
     *Purpose: update search based on text
@@ -103,7 +157,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
     *Properties modified: is_searching, searcingTableData
     *Precondition: Class must conform to UISearchBarDelegate
     ********************************************************************/
-    // MARK searching delegate logic
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
         println("did change")
         if searchBar.text.isEmpty{
@@ -149,10 +202,27 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
     
 
     // MARK: - Table view data source
+    
+    /********************************************************************
+    *Function: numberOfSectionsInTableView
+    *Purpose: sets the number of sections in local UITableView
+    *Parameters: tableView: UITableView
+    *Return: Int
+    *Properties NA
+    *Precondition: NA
+    ********************************************************************/
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
+    /********************************************************************
+    *Function: tableView
+    *Purpose: sets number of rows in a section
+    *Parameters: tableView: UITableView, numberOfRowsInSection section: Int
+    *Return: Int
+    *Properties NA
+    *Precondition: NA
+    ********************************************************************/
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.is_searching == true {
             return self.searchingTableData.count
@@ -161,7 +231,14 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
         }
     }
 
-    
+    /********************************************************************
+    *Function: tableView
+    *Purpose: sets the cell text with categories and keys
+    *Parameters: tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath
+    *Return: UITableViewCell
+    *Properties modified: UITableView cell at indexPath
+    *Precondition: Class must conform to UISearchBarDeletate and UITableViewDelegate
+    ********************************************************************/
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         //let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
