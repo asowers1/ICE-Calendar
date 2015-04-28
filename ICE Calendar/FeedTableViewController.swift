@@ -201,7 +201,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSource, UIT
     }
     
 
-    // MARK: - Table view data source
+    // MARK: - Table view data source and delegate methods
     
     /********************************************************************
     *Function: numberOfSectionsInTableView
