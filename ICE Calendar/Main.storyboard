@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e6E-Lv-saj">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -73,7 +74,7 @@
         <!--web-->
         <scene sceneID="Pq9-vf-wXW">
             <objects>
-                <viewController storyboardIdentifier="test" title="web" id="5wj-L6-dzI" customClass="FeedWebPageViewController" customModule="ICE_Calendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedWebPageViewController" title="web" id="5wj-L6-dzI" customClass="FeedWebPageViewController" customModule="ICE_Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f7s-zd-Ex5"/>
                         <viewControllerLayoutGuide type="bottom" id="jVB-QU-PyH"/>
@@ -135,7 +136,7 @@
         <!--Set Preferences-->
         <scene sceneID="lBK-E9-VzM">
             <objects>
-                <viewController id="lzX-Wl-YQu" customClass="categoryCollectionViewViewController" customModule="ICE_Calendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="categoryCollectionViewViewController" id="lzX-Wl-YQu" customClass="categoryCollectionViewViewController" customModule="ICE_Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aEq-X2-1eM"/>
                         <viewControllerLayoutGuide type="bottom" id="r7u-tH-Wqm"/>
@@ -215,7 +216,7 @@
         <!--Prefered events-->
         <scene sceneID="zXw-IO-MeV">
             <objects>
-                <tableViewController id="Laa-GR-NDi" customClass="preferedFeedTableViewController" customModule="ICE_Calendar" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="preferedFeedTableViewController" id="Laa-GR-NDi" customClass="preferedFeedTableViewController" customModule="ICE_Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Q5v-AF-5uR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

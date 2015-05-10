@@ -32,6 +32,7 @@ class ICE_CalendarTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    //tests for all viewControllers
     
     func testFeedTableViewController() {
         let SB = UIStoryboard(name: "Main", bundle: nil)
@@ -39,4 +40,19 @@ class ICE_CalendarTests: XCTestCase {
         let _ = VC.view
     }
     
+    func testPreferedFeedTableViewController(){
+        let SB = UIStoryboard(name: "Main", bundle: nil)
+        let VC: AnyObject! = SB.instantiateViewControllerWithIdentifier("preferedFeedTableViewController")
+        let _ = VC.view
+    }
+    func testFeedWebPageViewController(){
+        let SB = UIStoryboard(name: "Main", bundle: nil)
+        let VC: AnyObject! = SB.instantiateViewControllerWithIdentifier("FeedWebPageViewController")
+        let _ = VC.view
+    }
+    func testCategoryCollectionViewViewController(){
+        let SB = UIStoryboard(name: "Main", bundle: nil)
+        let VC: AnyObject! = SB.instantiateViewControllerWithIdentifier("categoryCollectionViewViewController")
+        let _ = VC.view
+    }
 }
